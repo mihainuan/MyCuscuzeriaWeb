@@ -15,10 +15,11 @@ namespace MyCuscuzeriaWebAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            DAL objDAL = new DAL();
 
-            //string stringSql = "insert into clients(Name,Password,Email,CreatedAt,LastOrder,UrlImg,Phone)" +
-            //                   "values ('new client','psswd','email@mail.com', NOW(),NOW(),'00','+1 (509) 339-3855')";
-            //objDAL.ExecutaComandoSQL(stringSql);
+            string stringSql = "insert into clients(Name,Password,Email,CreatedAt,LastOrder,UrlImg,Phone)" +
+                               "values ('new client','psswd','email@mail.com', NOW(),NOW(),'c:/img_','+1 (509) 339-3855')";
+            objDAL.ExecutaComandoSQL(stringSql);
 
 
             return new string[] { "value1", "value2" };

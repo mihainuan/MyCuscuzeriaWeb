@@ -5,9 +5,10 @@ namespace MyCuscuzeriaWeb.Util
 {
     public class DAL
     {
+        //String connection variables
         private static string Server = "localhost";
         private static string Database = "cuscuzeriadb";
-        private static string User = "mihai";
+        private static string User = "root";
         private static string Password = "mihai";
         private MySqlConnection Connection;
 
