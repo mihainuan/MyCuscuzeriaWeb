@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCuscuzeriaWeb", "MyCuscuzeriaWeb\MyCuscuzeriaWeb.csproj", "{617C562B-F6C7-4EAA-ABD5-70B37CE07CD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{617C562B-F6C7-4EAA-ABD5-70B37CE07CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617C562B-F6C7-4EAA-ABD5-70B37CE07CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617C562B-F6C7-4EAA-ABD5-70B37CE07CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617C562B-F6C7-4EAA-ABD5-70B37CE07CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91BFF543-9AE1-450C-B354-03DD076599E1}
+	EndGlobalSection
+EndGlobal
