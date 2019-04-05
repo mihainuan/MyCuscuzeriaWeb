@@ -13,7 +13,7 @@ namespace MyCuscuzeriaWeb.Util
         private MySqlConnection Connection;
 
         private string ConnectionString =
-            $"Server={Server};Database={Database};Uid={User};Pwd={Password};Sslmode=none;allowPublicKeyRetrieval=true;";
+            $"Server={Server};Database={Database};Uid={User};Pwd={Password};Sslmode=none;allowPublicKeyRetrieval=true; charset=utf8";
 
         public DAL()
         {

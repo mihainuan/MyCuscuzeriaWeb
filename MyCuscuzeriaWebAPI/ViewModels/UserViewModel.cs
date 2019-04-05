@@ -9,6 +9,9 @@ namespace MyCuscuzeriaWebAPI.ViewModels
 {
     public class UserViewModel
     {
+
+        #region Properties
+
         [Key]
         [ScaffoldColumn(false)]
         public int UserId { get; set; }
@@ -33,24 +36,39 @@ namespace MyCuscuzeriaWebAPI.ViewModels
 
         //public virtual OrderViewModel Order { get; set; }
 
+        #endregion
+
+        #region HTTP Methods (GET/POST/PUT/DELETE)
 
         /// <summary>
-        /// Registrar um novo usuário
+        /// Registrar um novo usuário (POST)
         /// </summary>
         public void RegisterUser()
         {
             DAL objDAL = new DAL();
 
             //$ -> interpolação de strings
-            string stringSql = $"insert into clients(Name,Password,Email,CreatedAt,LastOrder,UrlImg,Phone)" +
-                               $"values ('{Username}','{Password}','{Email}', '{CreatedAt.ToLocalTime()}','{LastOrder.ToLocalTime()}','{UrlImg}','{Phone}')";
+            string stringSql = $"insert into clients (" +
+                               $" Name," +
+                               $" Password," +
+                               $" Email," +
+                               $" CreatedAt," +
+                               $" LastOrder," +
+                               $" UrlImg," +
+                               $" Phone)" +
+                               $"values (" +
+                               $"'{Username}'," +
+                               $"'{Password}'," +
+                               $"'{Email}'," +
+                               $"'{DateTime.Parse(CreatedAt.ToString()).ToString("yyyy/MM/dd")}'," +
+                               $"'{DateTime.Parse(LastOrder.ToString()).ToString("yyyy/MM/dd")}'," +
+                               $"'{UrlImg}'," +
+                               $"'{Phone}') ";
 
             objDAL.ExecutaComandoSQL(stringSql);
-
         }
-
         /// <summary>
-        /// Listar todos os usuários
+        /// List ALL Users (GET)
         /// </summary>
         /// <returns></returns>
         public List<UserViewModel> ListUsers()
@@ -80,7 +98,11 @@ namespace MyCuscuzeriaWebAPI.ViewModels
             }
             return lista;
         }
-
+        /// <summary>
+        /// Lists ONE sigle User (GET)
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public UserViewModel ListOneUser(int userId)
         {
             UserViewModel item;
@@ -103,6 +125,45 @@ namespace MyCuscuzeriaWebAPI.ViewModels
 
             return item;
         }
+        /// <summary>
+        /// Updates ONE single User (PUT)
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public void UpdateUser(int userId)
+        {
+            UserViewModel item;
+            DAL objDAL = new DAL();
+
+            string querySql = $"update clients set " +
+                              $"Name = '{Username.ToString()}'," +
+                              $"Password = '{Password.ToString()}'," +
+                              $"Email = '{Email.ToString()}'," +
+                              $"CreatedAt = '{DateTime.Parse(CreatedAt.ToString()).ToString("yyyy/MM/dd")}'," +
+                              $"LastOrder = '{DateTime.Parse(LastOrder.ToString()).ToString("yyyy/MM/dd")}'," +
+                              $"UrlImg = '{UrlImg.ToString()}'," +
+                              $"Phone = '{Phone.ToString()}' " +
+                              $"where UserId = {userId.ToString()}";
+
+            objDAL.ExecutaComandoSQL(querySql);
+        }
+        /// <summary>
+        /// Deletes ONE single user (DELETE)
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeletarUsuario(int id)
+        {
+            UserViewModel item;
+            DAL objDAL = new DAL();
+
+            string querySql = $"delete from clients " +
+                              $"where UserId = {id}";
+
+            objDAL.ExecutaComandoSQL(querySql);
+        }
+
+        #endregion
+
     }
 }
 
