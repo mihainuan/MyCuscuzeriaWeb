@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyCuscuzeriaWeb.Util;
 using MyCuscuzeriaWebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Data;
 
 namespace MyCuscuzeriaWebAPI.Controllers
 {
@@ -11,37 +9,26 @@ namespace MyCuscuzeriaWebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        // GET api/Users
+        // GET api/Users/ListarUsuarios
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [Route("ListarUsuarios")]
+        public List<UserViewModel> ListarUsuarios()
         {
-            DAL objDAL = new DAL();
-
-            string stringSql = "insert into clients(Name,Password,Email,CreatedAt,LastOrder,UrlImg,Phone)" +
-                               "values ('new client','psswd','email@mail.com', NOW(),NOW(),'c:/img_','+1 (509) 339-3855')";
-            objDAL.ExecutaComandoSQL(stringSql);
-
-
-            return new string[] { "value1", "value2" };
+            return new UserViewModel().ListUsers();
         }
 
-        // GET api/Users/5
+        // GET api/Users/ListarUsuarios/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [Route("ListarUsuario/{id}")]
+        public UserViewModel ListaUsuario(int id)
         {
-            DAL objDAL = new DAL();
-
-            //$ -> interpolação de strings
-            string sql = $"select * from Clients where UserId = {id}";
-            DataTable dados = objDAL.RetornaDataTable(sql);
-
-            return dados.Rows[0]["Name"].ToString();
+            return new UserViewModel().ListOneUser(id);
         }
 
         // POST api/Users/RegistrarUsuario
         [HttpPost]
         [Route("RegistrarUsuario")]
-        public ReturnAllServices RegistrarCliente([FromBody]UserViewModel dados)
+        public ReturnAllServices RegistrarUsuario([FromBody]UserViewModel dados)
         {
             ReturnAllServices retorno = new ReturnAllServices();
 
