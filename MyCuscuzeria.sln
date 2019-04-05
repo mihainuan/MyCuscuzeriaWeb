@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCuscuzeriaWebAPI", "MyCus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCuscuzeriaWeb", "MyCuscuzeriaWeb\MyCuscuzeriaWeb.csproj", "{413C2CFC-3D1F-464A-830D-5795CFF4DE9F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCuscuzeriaAppConsole", "MyCuscuzeriaAppConsole\MyCuscuzeriaAppConsole.csproj", "{B7AF9B21-D95A-4AA7-9900-D0CA94E77E4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{413C2CFC-3D1F-464A-830D-5795CFF4DE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{413C2CFC-3D1F-464A-830D-5795CFF4DE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{413C2CFC-3D1F-464A-830D-5795CFF4DE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7AF9B21-D95A-4AA7-9900-D0CA94E77E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7AF9B21-D95A-4AA7-9900-D0CA94E77E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7AF9B21-D95A-4AA7-9900-D0CA94E77E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7AF9B21-D95A-4AA7-9900-D0CA94E77E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
