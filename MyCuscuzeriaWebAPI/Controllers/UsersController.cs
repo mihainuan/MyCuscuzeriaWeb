@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using MyCuscuzeriaWeb.Util;
 using MyCuscuzeriaWebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,13 @@ namespace MyCuscuzeriaWebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private Authentication autenticationService;
+
+        public UsersController(IHttpContextAccessor context)
+        {
+            autenticationService = new Authentication(context);
+        }
+
         // GET api/Users/ListarUsuarios
         [HttpGet]
         [Route("ListarUsuarios")]
@@ -19,7 +28,7 @@ namespace MyCuscuzeriaWebAPI.Controllers
             try
             {
                 retorno.Result = true;
-                retorno.ErrorMessage = string.Empty;
+                retorno.ErrorMessage = "GET SUCCESS!";
                 return new UserViewModel().ListUsers();
             }
             catch (Exception ex)
@@ -38,7 +47,7 @@ namespace MyCuscuzeriaWebAPI.Controllers
             try
             {
                 retorno.Result = true;
-                retorno.ErrorMessage = string.Empty;
+                retorno.ErrorMessage = "GET SUCCESS!";
                 return new UserViewModel().ListOneUser(id);
             }
 
@@ -64,7 +73,7 @@ namespace MyCuscuzeriaWebAPI.Controllers
 
                 dados.RegisterUser();
                 retorno.Result = true;
-                retorno.ErrorMessage = string.Empty;
+                retorno.ErrorMessage = "POST SUCCESS!";
             }
 
             catch (Exception ex)
@@ -88,7 +97,7 @@ namespace MyCuscuzeriaWebAPI.Controllers
 
                 dados.UpdateUser(id);
                 retorno.Result = true;
-                retorno.ErrorMessage = string.Empty;
+                retorno.ErrorMessage = "PUT SUCCESS!";
             }
 
             catch (Exception ex)
@@ -107,9 +116,10 @@ namespace MyCuscuzeriaWebAPI.Controllers
 
             try
             {
+                autenticationService.Authenticate();
                 new UserViewModel().DeletarUsuario(id);
                 retorno.Result = true;
-                retorno.ErrorMessage = string.Empty;
+                retorno.ErrorMessage = "DELETE SUCCESS!";
             }
 
             catch (Exception ex)
