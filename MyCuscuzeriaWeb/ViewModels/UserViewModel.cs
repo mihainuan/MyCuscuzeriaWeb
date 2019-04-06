@@ -34,7 +34,7 @@ namespace MyCuscuzeriaWeb.Models
         public List<UserViewModel> ListAllUsers()
         {
             List<UserViewModel> retorno = new List<UserViewModel>();
-            string json = WebAPI.RequestGET("ListarUsuarios", string.Empty);
+            string json = WebAPI.RequestGET("ListarUsuarios");
             retorno = JsonConvert.DeserializeObject<List<UserViewModel>>(json);
             return retorno;
         }
