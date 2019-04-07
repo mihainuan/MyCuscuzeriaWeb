@@ -40,6 +40,7 @@
                                 <th>Telefone</th>
                                 <th>Data Registro</th>
                                 <th>Último Pedido</th>
+                                <th>Editar/Excluir</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -50,6 +51,7 @@
                                 <th><i>Phone</i></th>
                                 <th><i>CreatedAt</i></th>
                                 <th><i>LastOrder</i></th>
+                                <th><i>Edit/Delete</i></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -62,6 +64,14 @@
                                     <td>@item.Phone.ToString()</td>
                                     <td>@item.CreatedAt.ToString()</td>
                                     <td>@item.LastOrder.ToString()</td>
+                                    <td style="text-align: center">
+                                        <a href="/Users/Register/@item.UserId.ToString()" class="btn btn-warning btn-circle btn-sm" title="Editar Usuário">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-circle btn-sm" title="Excluir Usuário">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>

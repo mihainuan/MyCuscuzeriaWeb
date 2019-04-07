@@ -1,6 +1,26 @@
 ﻿@model UserViewModel
 @{
     ViewData["Title"] = "Registrar";
+
+    var id = string.Empty;
+    var username = string.Empty;
+    var email = string.Empty;
+    var phone = string.Empty;
+    var password = string.Empty;
+
+    try
+    {
+        id = ViewBag.ListOneUser.UserId.ToString();
+        username = ViewBag.ListOneUser.Username.ToString();
+        email = ViewBag.ListOneUser.Email.ToString();
+        phone = ViewBag.ListOneUser.Phone.ToString();
+        password = ViewBag.ListOneUser.Password.ToString();
+    }
+    catch
+    {
+
+    }
+
 }
 <body class="bg-gradient-primary">
     <div class="container">
@@ -12,37 +32,36 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Registrar um Usuário</h1>
+                                <h1 class="h4 text-gray-900 mb-4">@ViewBag.Verb um Usuário</h1>
                             </div>
                             <form asp-controller="Users" asp-action="Register" class="user">
-
+                                <input asp-for="UserId" class="form-control" value="@id" type="hidden" />
                                 <div class="form-group">
-                                    <input asp-for="Username" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome">
+                                    <input asp-for="Username" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome" value="@username">
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input asp-for="Email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Endereço de E-mail">
+                                        <input asp-for="Email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Endereço de E-mail" value="@email">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input asp-for="Phone" type="number" class="form-control form-control-user" id="examplePhone" placeholder="Telefone">
+                                        <input asp-for="Phone" type="tel" class="form-control form-control-user" id="examplePhone" placeholder="Telefone" value="@phone">
                                     </div>
-
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
+                                        <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" value="@password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repita a Senha">
+                                        <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repita a Senha" value="@password">
                                     </div>
                                 </div>
 
                                 @*<a href="login.html" class="btn btn-primary btn-user btn-block">
                                         Criar Usuário
                                     </a>*@
-                                <button type="submit" class="btn btn-success btn-user btn-block" onclick="register()">Criar Usuário</button>
+                                <button type="submit" class="btn btn-success btn-user btn-block" onclick="register()">@ViewBag.Verb Usuário</button>
                             </form>
                             <hr>
                             <div class="text-center">

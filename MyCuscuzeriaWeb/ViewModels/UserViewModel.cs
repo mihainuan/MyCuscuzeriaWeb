@@ -34,15 +34,34 @@ namespace MyCuscuzeriaWeb.Models
         public List<UserViewModel> ListAllUsers()
         {
             List<UserViewModel> retorno = new List<UserViewModel>();
-            string json = WebAPI.RequestGET("ListarUsuarios");
+            string json = WebAPI.RequestGET("ListarUsuarios", string.Empty);
             retorno = JsonConvert.DeserializeObject<List<UserViewModel>>(json);
             return retorno;
         }
 
-        public void CreateUser()
+        public void CreateOrUpdateUser()
         {
             string jsonData = JsonConvert.SerializeObject(this);
-            string json = WebAPI.RequestPOST("RegistrarUsuario", jsonData);
+
+            if (UserId == 0)
+            {
+                //Create
+                WebAPI.RequestPOST("RegistrarUsuario", jsonData);
+            }
+            else
+            {
+                //Update
+                WebAPI.RequestPUT("AtualizarUsuario", UserId.ToString(), jsonData);
+            }
         }
+
+        public UserViewModel LoadUser(int? id)
+        {
+            UserViewModel retorno = new UserViewModel();
+            string json = WebAPI.RequestGET("ListarUsuario", id.ToString());
+            retorno = JsonConvert.DeserializeObject<UserViewModel>(json);
+            return retorno;
+        }
+
     }
 }

@@ -47,8 +47,14 @@ namespace MyCuscuzeriaWebAPI.ViewModels
         {
             DAL objDAL = new DAL();
 
+            //Avoiding Datetime Issues...
+            DateTime now = DateTime.Now;
+            DateTime yearAgo = DateTime.Now.AddYears(-1);
+            string dtStrNow = String.Format("{0:s}", now);
+            string dtStrYearAgo = String.Format("{0:s}", yearAgo);
+
             //$ -> interpolação de strings
-            string stringSql = $"insert into clients (" +
+            string stringSql = " insert into clients (" +
                                $" Name," +
                                $" Password," +
                                $" Email," +
@@ -60,8 +66,8 @@ namespace MyCuscuzeriaWebAPI.ViewModels
                                $"'{Username}'," +
                                $"'{Password}'," +
                                $"'{Email}'," +
-                               $"'{DateTime.Parse(CreatedAt.ToString()).ToString("yyyy/MM/dd")}'," +
-                               $"'{DateTime.Parse(LastOrder.ToString()).ToString("yyyy/MM/dd")}'," +
+                               $"'{dtStrNow}'," +
+                               $"'{dtStrYearAgo}'," +
                                $"'{UrlImg}'," +
                                $"'{Phone}') ";
 
@@ -128,22 +134,24 @@ namespace MyCuscuzeriaWebAPI.ViewModels
         /// <summary>
         /// Updates ONE single User (PUT)
         /// </summary>
-        /// <param name="userId"></param>
         /// <returns></returns>
-        public void UpdateUser(int userId)
+        public void UpdateUser()
         {
-            UserViewModel item;
             DAL objDAL = new DAL();
 
-            string querySql = $"update clients set " +
-                              $"Name = '{Username.ToString()}'," +
-                              $"Password = '{Password.ToString()}'," +
-                              $"Email = '{Email.ToString()}'," +
-                              $"CreatedAt = '{DateTime.Parse(CreatedAt.ToString()).ToString("yyyy/MM/dd")}'," +
-                              $"LastOrder = '{DateTime.Parse(LastOrder.ToString()).ToString("yyyy/MM/dd")}'," +
-                              $"UrlImg = '{UrlImg.ToString()}'," +
-                              $"Phone = '{Phone.ToString()}' " +
-                              $"where UserId = {userId.ToString()}";
+            //Avoiding Datetime Issues...
+            DateTime now = DateTime.Now;
+            string dtStrNow = String.Format("{0:s}", now);
+
+            string querySql = " update clients set " +
+                              $"Name = '{Username}'," +
+                              $"Password = '{Password}'," +
+                              $"Email = '{Email}'," +
+                              $"CreatedAt = '{String.Format("{0:s}", CreatedAt)}'," +
+                              $"LastOrder = '{dtStrNow}'," +
+                              $"UrlImg = '{UrlImg}'," +
+                              $"Phone = '{Phone}' " +
+                              $"where UserId = {UserId}";
 
             objDAL.ExecutaComandoSQL(querySql);
         }
@@ -153,7 +161,6 @@ namespace MyCuscuzeriaWebAPI.ViewModels
         /// <param name="id"></param>
         public void DeletarUsuario(int id)
         {
-            UserViewModel item;
             DAL objDAL = new DAL();
 
             string querySql = $"delete from clients " +

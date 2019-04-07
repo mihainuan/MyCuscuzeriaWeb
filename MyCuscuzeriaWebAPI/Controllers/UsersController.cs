@@ -86,16 +86,13 @@ namespace MyCuscuzeriaWebAPI.Controllers
 
         // PUT api/Users/AtualizarUsuario/5
         [HttpPut("AtualizarUsuario/{id}")]
-        public ReturnAllServices AtualizarUsuario(int id, [FromBody]UserViewModel dados)
+        public ReturnAllServices AtualizarUsuario([FromBody]UserViewModel dados)
         {
             ReturnAllServices retorno = new ReturnAllServices();
 
             try
             {
-                dados.CreatedAt = DateTime.Now.AddYears(-4);
-                dados.LastOrder = DateTime.Now.AddYears(20);
-
-                dados.UpdateUser(id);
+                dados.UpdateUser();
                 retorno.Result = true;
                 retorno.ErrorMessage = "PUT SUCCESS!";
             }

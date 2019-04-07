@@ -16,8 +16,17 @@ namespace MyCuscuzeriaWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(int? id)
         {
+            if (id != null)
+            {
+                ViewBag.Verb = "Atualizar";
+                ViewBag.ListOneUser = new UserViewModel().LoadUser(id);
+            }
+            else
+            {
+                ViewBag.Verb = "Registrar";
+            }
             return View();
         }
 
@@ -27,7 +36,8 @@ namespace MyCuscuzeriaWeb.Controllers
             dados.CreatedAt = DateTime.Now;
             dados.LastOrder = DateTime.Now.AddYears(-1);
 
-            dados.CreateUser();
+            dados.CreateOrUpdateUser();
+            //TODO: Return to index after Add/Edit
             return View();
         }
 
