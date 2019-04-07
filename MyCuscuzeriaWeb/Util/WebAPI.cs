@@ -28,7 +28,7 @@ namespace MyCuscuzeriaWeb.Util
         public static string RequestPOST(string route, string JsonData)
         {
             var data = Encoding.ASCII.GetBytes(JsonData);
-            var request = (HttpWebRequest)WebRequest.Create(URI + route);
+            var request = (HttpWebRequest)WebRequest.Create(URI + "/" + route);
             request.Method = "POST";
             request.Headers.Add("Token", TOKEN);
             request.ContentType = "application/json";

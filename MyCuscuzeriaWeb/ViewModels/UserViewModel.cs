@@ -38,5 +38,11 @@ namespace MyCuscuzeriaWeb.Models
             retorno = JsonConvert.DeserializeObject<List<UserViewModel>>(json);
             return retorno;
         }
+
+        public void CreateUser()
+        {
+            string jsonData = JsonConvert.SerializeObject(this);
+            string json = WebAPI.RequestPOST("RegistrarUsuario", jsonData);
+        }
     }
 }
