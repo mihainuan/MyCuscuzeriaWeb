@@ -5,7 +5,7 @@ namespace MyCuscuzeriaWeb.Util
 {
     public class Authentication
     {
-        public static string Token = "cgeUGhsBnbSI24u6L6ECwb5RDUBl8UOc";
+        public static string Token = "igH2wNmuyMO9e0Qv4FYl8StHdbQ9TFvO";
         public static string Auth_Fail = "Falha na Autenticação. Token Inválido!";
 
         private static IHttpContextAccessor contextAccessor;

@@ -12,6 +12,7 @@ namespace MyCuscuzeriaWeb.Util
         public static string RequestGET(string route, string idx)
         {
             var request = (HttpWebRequest)WebRequest.Create(URI + "/" + route + "/" + idx);
+            request.Method = "GET";
             request.Headers.Add("Token", TOKEN);
 
             var response = (HttpWebResponse)request.GetResponse();
@@ -61,6 +62,21 @@ namespace MyCuscuzeriaWeb.Util
             {
                 stream.Write(data, 0, data.Length);
             }
+            var response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                string responseString = reader.ReadToEnd();
+                return responseString;
+            }
+        }
+
+        public static string RequestDELETE(string route, string idx)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(URI + "/" + route + "/" + idx);
+            request.Method = "DELETE";
+            request.Headers.Add("Token", TOKEN);
             var response = (HttpWebResponse)request.GetResponse();
 
             using (Stream stream = response.GetResponseStream())

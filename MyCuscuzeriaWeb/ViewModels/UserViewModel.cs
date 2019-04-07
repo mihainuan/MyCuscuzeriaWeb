@@ -9,6 +9,9 @@ namespace MyCuscuzeriaWeb.Models
 {
     public class UserViewModel
     {
+
+        #region Properties
+
         [Key]
         [ScaffoldColumn(false)]
         public int UserId { get; set; }
@@ -31,6 +34,14 @@ namespace MyCuscuzeriaWeb.Models
         [ScaffoldColumn(false)]
         public string UrlImg { get; set; }
 
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Lista todos os Usuários
+        /// </summary>
+        /// <returns></returns>
         public List<UserViewModel> ListAllUsers()
         {
             List<UserViewModel> retorno = new List<UserViewModel>();
@@ -39,6 +50,22 @@ namespace MyCuscuzeriaWeb.Models
             return retorno;
         }
 
+        /// <summary>
+        /// Carrega UM usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserViewModel LoadUser(int? id)
+        {
+            UserViewModel retorno = new UserViewModel();
+            string json = WebAPI.RequestGET("ListarUsuario", id.ToString());
+            retorno = JsonConvert.DeserializeObject<UserViewModel>(json);
+            return retorno;
+        }
+
+        /// <summary>
+        /// Cria ou Atualiza UM usuário
+        /// </summary>
         public void CreateOrUpdateUser()
         {
             string jsonData = JsonConvert.SerializeObject(this);
@@ -55,13 +82,15 @@ namespace MyCuscuzeriaWeb.Models
             }
         }
 
-        public UserViewModel LoadUser(int? id)
+        /// <summary>
+        /// Remove UM Usuário
+        /// </summary>
+        /// <param name="id"></param>
+        public void RemoveUser(int id)
         {
-            UserViewModel retorno = new UserViewModel();
-            string json = WebAPI.RequestGET("ListarUsuario", id.ToString());
-            retorno = JsonConvert.DeserializeObject<UserViewModel>(json);
-            return retorno;
+            string json = WebAPI.RequestDELETE("DeletarUsuario", id.ToString());
         }
 
+        #endregion
     }
 }

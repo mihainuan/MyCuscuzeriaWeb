@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyCuscuzeriaWeb.Models;
 using System;
-using System.Diagnostics;
 
 namespace MyCuscuzeriaWeb.Controllers
 {
@@ -35,17 +34,17 @@ namespace MyCuscuzeriaWeb.Controllers
         {
             dados.CreatedAt = DateTime.Now;
             dados.LastOrder = DateTime.Now.AddYears(-1);
-
             dados.CreateOrUpdateUser();
-            //TODO: Return to index after Add/Edit
-            return View();
+
+            return RedirectToAction("Index");
         }
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Remove(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            new UserViewModel().RemoveUser(id);
+
+            return RedirectToAction("Index");
         }
     }
 }
