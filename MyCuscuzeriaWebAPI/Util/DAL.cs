@@ -6,14 +6,18 @@ namespace MyCuscuzeriaWeb.Util
     public class DAL
     {
         //String connection variables
-        private static string Server = "localhost";
+        private static string Server = "mycuscuzeriadb.mysql.database.azure.com";
+        //private static string Server = "localhost"; 
         private static string Database = "cuscuzeriadb";
-        private static string User = "root";
-        private static string Password = "mihai";
+        private static string User = "mihai@mycuscuzeriadb";
+        //private static string User = "mihai";
+        private static string Password = "SZ@kM19&L";
+        //private static string Password = "";
+
         private MySqlConnection Connection;
 
         private string ConnectionString =
-            $"Server={Server};Database={Database};Uid={User};Pwd={Password};Sslmode=none;allowPublicKeyRetrieval=true; charset=utf8";
+            $"Server={Server};Database={Database};Uid={User};Pwd={Password};Sslmode=Required;allowPublicKeyRetrieval=true; charset=utf8";
 
         public DAL()
         {
