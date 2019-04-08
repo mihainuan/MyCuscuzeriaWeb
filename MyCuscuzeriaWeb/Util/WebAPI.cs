@@ -6,7 +6,7 @@ namespace MyCuscuzeriaWeb.Util
 {
     public class WebAPI
     {
-        public static string URI = "http://localhost:60806/api/users";
+        public static string URI = "http://191.232.213.21:8080/api/users";
         public static string TOKEN = "igH2wNmuyMO9e0Qv4FYl8StHdbQ9TFvO";
 
         public static string RequestGET(string route, string idx)

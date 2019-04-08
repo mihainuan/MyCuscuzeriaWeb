@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyCuscuzeriaWebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MyCuscuzeriaWebAPI.ViewModels.UserViewModel.RegisterUser">
+            <summary>
+            Registrar um novo usuário (POST)
+            </summary>
+        </member>
+        <member name="M:MyCuscuzeriaWebAPI.ViewModels.UserViewModel.ListUsers">
+            <summary>
+            List ALL Users (GET)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyCuscuzeriaWebAPI.ViewModels.UserViewModel.ListOneUser(System.Int32)">
+            <summary>
+            Lists ONE sigle User (GET)
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCuscuzeriaWebAPI.ViewModels.UserViewModel.UpdateUser">
+            <summary>
+            Updates ONE single User (PUT)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyCuscuzeriaWebAPI.ViewModels.UserViewModel.DeletarUsuario(System.Int32)">
+            <summary>
+            Deletes ONE single user (DELETE)
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>
